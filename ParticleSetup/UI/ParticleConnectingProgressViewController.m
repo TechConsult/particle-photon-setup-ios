@@ -351,6 +351,8 @@ typedef NS_ENUM(NSInteger, ParticleSetupConnectionProgressState) {
             }];
         } else {
             // finished
+            [[NSUserDefaults standardUserDefaults] setObject:self.deviceID forKey:@"flutter.device_id"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             [self setCurrentConnectionProgressStateError:NO];
             [self finishSetupWithResult:ParticleSetupMainControllerResultSuccessNotClaimed];
 
